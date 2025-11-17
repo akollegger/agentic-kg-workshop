@@ -24,7 +24,7 @@ cp .env.template .env
 Make two changes:
 - Replace `NEO4J_PASSWORD` with a password of your choosing, to be used later when you create a Neo4j database
 - Replace `OPENAI_API_KEY` with the OpenAI API key provided for the workshop
-
+- Replace `NEO4J_IMPORT_DIR` with the location of the data directory of the cloned repository
 
 ### 3. Set up locally managed Neo4j
 
