@@ -16,17 +16,10 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Create a copy of the environment variables file:
-```bash
-cp .env.template .env
-```
 
-Make two changes:
-- Replace `NEO4J_PASSWORD` with a password of your choosing, to be used later when you create a Neo4j database
-- Replace `OPENAI_API_KEY` with the OpenAI API key provided for the workshop
-- Replace `NEO4J_IMPORT_DIR` with the location of the data directory of the cloned repository
+### 2. Set up Neo4j
 
-### 3. Set up locally managed Neo4j
+#### 2.1 Neo4j Desktop on your local machine
 
 Install Neo4j Desktop:
 1. Download and install Neo4j Desktop from https://neo4j.com/download-center/
@@ -38,7 +31,7 @@ Install required plugins:
 - install "GenAI" for AI capabilities
 
 
-Edit `neo4j.con` (for older versions of Desktop):
+Edit `neo4j.conf` (for older versions of Desktop):
 ```
 dbms.security.procedures.unrestricted=apoc.*
 dbms.security.procedures.allowlist=apoc.*,genai.*
@@ -50,14 +43,26 @@ Check the procedures are available:
 SHOW PROCEDURES WHERE name CONTAINS "genai.vector"
 ```
 
+#### 2.2 Neo4j Aura in the cloud
 
-Click on the folder icon next to "Path" to open the database directory:
-- Copy all the content of `data` to the `import` sub-directory
-- for example, I would do:
-    `cp -r data/* '/Users/akollegger/Library/Application Support/Neo4j Desktop/Application/relate-data/dbmss/dbms-e9a4b9cc-ba2d-4fb8-8c19-ab29ef8fb08f/import'`
+Sign-up for Neo4j Aura:
+1. Visit: http://console.neo4j.io
+2. Click the "Create instance" button on the "Instances" page
+3. Optional: name the instance
+4. Click "Create instance" on the bottom of the page
+5. Copy the password someplace safe (for use in a `.env` file later)
+6. Click "Download and continue"
+7. Wait for the instance to be provisioned
 
+### 3. Create a copy of the environment variables file:
+```bash
+cp .env.template .env
+```
 
-
+Make two changes:
+- Replace `NEO4J_PASSWORD` with the password for your database
+- Replace `OPENAI_API_KEY` with the OpenAI API key provided for the workshop
+- Replace `NEO4J_IMPORT_DIR` with the location of the data directory of the cloned repository
 
 
 
