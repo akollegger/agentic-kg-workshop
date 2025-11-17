@@ -38,11 +38,18 @@ Install required plugins:
 - install "GenAI" for AI capabilities
 
 
-Edit `neo4j.con`:
+Edit `neo4j.con` (for older versions of Desktop):
 ```
 dbms.security.procedures.unrestricted=apoc.*
 dbms.security.procedures.allowlist=apoc.*,genai.*
 ```
+
+Check the procedures are available:
+
+```cypher
+SHOW PROCEDURES WHERE name CONTAINS "genai.vector"
+```
+
 
 Click on the folder icon next to "Path" to open the database directory:
 - Copy all the content of `data` to the `import` sub-directory
